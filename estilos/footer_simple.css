@@ -24,7 +24,7 @@
     color: #cacdd2;
 }
 .footer .footer-content .footer_title{
-    color: #1255ff;
+    color: rgb(126, 160, 227);
 }
 .socials{
     list-style: none;
@@ -54,7 +54,7 @@
 
 }
 .socials a:hover i{
-    color: aqua;
+    color: rgb(110, 128, 218);
 }
 
 .footer-menu{

@@ -13,17 +13,22 @@ a:focus {
 .footer {
     position: relative;
     padding-top: 45px;
-    background-color: #e9ecef9e;
+    background-color: #212529;
     background-size: cover;
 }
+.footer .title-footer{
+    color: #7095b3;
+    font-size: 2cm;
+    line-height: 1.2;
 
+}
 .footer .footer-about,
 .footer .footer-contact,
 .footer .footer-links,
 .footer .footer-project {
     position: relative;
     margin-bottom: 45px;
-    color: #000000;
+    color: #ffffff;
 }
 
 .footer .footer-about h3,
@@ -35,7 +40,7 @@ a:focus {
     padding-bottom: 10px;
     font-size: 20px;
     font-weight: 600;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .footer .footer-about h3::after,
@@ -58,32 +63,32 @@ a:focus {
 
 .footer .footer-social a {
     display: inline-block;
-    width: 35px;
-    height: 35px;
-    padding: 6px 0;
+    width: 45px;
+    height: 45px;
+    padding: 11px 0;
     text-align: center;
-    color: #000000;
+    color: #ffffff;
     font-size: 14px;
-    border: 1px solid #000000;
+    border: 3px solid #ffffff00;
     border-radius: 35px;
 }
 
 .footer .footer-social a:hover {
     color: #000000;
-    background: #6DA9DB;
-    border-color: #6DA9DB;
+    background: #96bddd;
+    border-color: #ffffff;
 }
 
 .footer .footer-contact p {
     margin-bottom: 10px;
     font-size: 16px;
-    color: #000000;
+    color: #ffffff;
 }
 
 .footer .footer-contact i {
     margin-right: 10px;
     font-size: 16px;
-    color: #000000;
+    color: #ffffff;
 }
 
 .footer .footer-contact a:last-child i {
@@ -91,14 +96,14 @@ a:focus {
 }
 
 .footer .footer-contact a:hover i {
-    color: #000000;
+    color: #adbdca;
 }
 
 .footer .footer-links a {
     display: block;
     margin-bottom: 6px;
     padding-left: 15px;
-    color: #000000;
+    color: #ffffff;
 }
 
 .footer .footer-links a:last-child {
@@ -106,7 +111,7 @@ a:focus {
 }
 
 .footer .footer-links a:hover {
-    color: #6DA9DB;
+    color: #96bddd;
 }
 
 .footer .footer-links a::before {
@@ -137,7 +142,7 @@ a:focus {
     margin-bottom: 35px;
     max-width: 700px;
     text-align: center;
-    color: #000000;
+    color: #adbdca;
 }
 
 .footer .footer-newsletter input {
@@ -156,7 +161,7 @@ a:focus {
     font-weight: 400;
     text-transform: uppercase;
     color: #ffffff;
-    background: #000000;
+    background: #7095b3;
     border-radius: 5px;
     border: none;
     transition: .3s;
@@ -164,7 +169,7 @@ a:focus {
 
 .footer .footer-newsletter .btn:hover {
     color: #000000;
-    background: #6DA9DB;
+    background: #e3e3e3;
 }
 
 .footer .footer-newsletter .btn:focus {

@@ -109,7 +109,7 @@
 
 
 body {
-  background-image: url("../iconos/fondo\ asf.jpg!d");
+  background-image: radial-gradient(circle at 49.37% 57.25%, #ffffff 0, #d4d8f6 50%, #8592c5 100%);
   background-repeat: no-repeat;  
   background-size: cover;
 }
