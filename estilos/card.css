@@ -1,0 +1,78 @@
+
+.cards-god{
+    display: flex;
+}
+
+.cards{
+    display: flex;
+    font-weight: 100;
+}
+
+@media (max-width: 860.98px) {
+    .cards {
+        display:block
+    }
+}
+
+.cards .siteTitle {
+    display: flex;
+    font-weight: 100;
+    font-size: 30px;
+    margin: 20px ;
+}
+
+.cards,
+header,
+main,
+footer {
+    margin: 25px;
+}
+
+.cards .card {
+    width: 560px;
+    height: 400px;
+
+    margin: 25px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+    margin-bottom: 20px;
+    background-image: url('../img/productos/samsung.jpg');
+    background-size: cover;
+}
+.card:hover{
+    transform: scale3d(1.060, 1.060, 1);
+}
+
+.cards .inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    background: rgb(0, 0, 0);
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.cards .title {
+    font-size: 24px;
+    color: rgb(0, 0, 0);  
+    text-align: center;
+    font-weight: 700;
+    color: #f7f7f7;
+    position: relative;
+    margin: 0 0 20px 0;
+}
+
+
+.cards .card2 {
+    width: 560px;
+    background-image: url('../img/productos/lg.jpg');
+}
+
+.cards .card3 {
+    width: 560px;
+    background-image: url('../img/productos/lenovo.jpg');
+}

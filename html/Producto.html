@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "../estilos/bootstrap.css">
+    <link rel="icon" href="../iconos/producto.png">
+    <link rel="stylesheet" href="../estilos/footer_simple.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Productos</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" >
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../Index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./Cliente.html">Cliente</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./Usuario.html">Usuario</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./Categoria.html">Categoria</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./Producto.html">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./Pago.html">Pagos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./Detalle.html">Detalle de Compra</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./Reportes.html">Reporte General</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./ReporteFecha.html">Reporte por fechas</a>
+            </li>
+            </ul>
+            <form class="d-flex">
+            <input class="form-control me-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+        </div>
+    </nav>
+
+<br><br>
+
+    <center>
+        <h1>Agregar Productos</h1><br><br>
+    
+
+    <form class="form-switch .form-check-input" id = "formpro">
+
+        <div class="form-group">
+            <input class = "form-control" id="NombreProducto" placeholder="Nombre del Producto">
+        </div>
+        <div class="form-group">
+            <input class = "form-control" id="Marca" placeholder="Marca del producto">
+        </div>
+        <div class="form-group">
+            <input class = "form-control" id="PrecioU" placeholder="Precio Unitario">
+        </div>
+        <div class="form-group">
+            <input class = "form-control" id="Stock" placeholder="Stock">
+        </div>
+        <div class="form-group">
+            <input class = "form-control" id="IdCategoria" placeholder="Id de Categoria perteneciente">
+        </div>
+        
+        
+        <button type="submit" class="btn btn-primary button">Guardar</button><br><br>
+    </form>
+    <br><br>
+</center>
+
+    <table class = "table">
+        
+        <thead>
+            <td><h5>Id del Producto</h5></td>
+            <td><h5>Nombre del Producto</h5></td>
+            <td><h5>Marca del producto</h5></td>
+            <td><h5>Precio Unitario</h5></td>
+            <td><h5>Stock</h5></td>
+            <td><h5>Id de Categoria</h5></td>
+
+            <td><h5>Eliminar / Editar</h5></td>
+    </thead>
+            <tbody id = 'data'>
+            </tbody>
+    </table>
+<br><br>
+<br>
+
+    <br><br>
+    <script src = "../js/Producto.js"></script>
+
+    <div class="footer">
+        <div class="footer-content">
+            <h3 class="footer_title">Sobre la Empresa</h3>
+            <p>Seremos la principal empresa en importación y distribución de tecnología ampliaremos nuestra infraestructura a nivel nacional para ofrecer una mejor cobertura y mejorar el servicio al cliente posicionándonos en el mercado como la empresa más reconocida en el sector tecnológico</p>
+            <ul class="socials">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
