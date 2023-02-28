@@ -13,7 +13,7 @@ const CargaPago = (pagos)=>{
             <td class="table-dark">${pago.Fecha}</td>
             <td class="table-dark">${pago.ModoDePago}</td>
             <td class="table-dark">${pago.IdUsuario}</td>
-            <td class="table-dark">${pago.IdProducto}</td>
+            <td class="table-dark">${pago.NumDetalle}</td>
             <td class="table-dark"><button type="submit" class="btn btn-danger btnDelete">Eliminar</button></td>
             <td class="table-dark"><button type="submit" class="btn btn-success btnEditar">Editar</button></td>
         </tr>`
@@ -56,7 +56,7 @@ formpro.addEventListener("submit", (e) => {
                     Fecha:Fecha.value,
                     ModoDePago:ModoDePago.value,
                     IdUsuario:IdUsuario.value,
-                    IdProducto:IdProducto.value,
+                    NumDetalle:NumDetalle.value,
                 })
         })
     .then(response => response.json())
@@ -73,7 +73,7 @@ formpro.addEventListener("submit", (e) => {
                         Fecha:Fecha.value,
                         ModoDePago:ModoDePago.value,
                         IdUsuario:IdUsuario.value,
-                        IdProducto:IdProducto.value,
+                        NumDetalle:NumDetalle.value,
                     })
             })
         .then(response => response.json())
@@ -95,12 +95,12 @@ on (document, 'click', '.btnEditar', e => {
         const fFecha = fila.children[1].innerHTML
         const fModoDePago = fila.children[2].innerHTML
         const fIdUsuario = fila.children[3].innerHTML
-        const fIdProducto = fila.children[4].innerHTML
+        const fNumDetalle = fila.children[4].innerHTML
 
         Fecha.value = fFecha
         ModoDePago.value = fModoDePago
         IdUsuario.value = fIdUsuario
-        IdProducto.value = fIdProducto
+        NumDetalle.value = fNumDetalle
 
     operacion = "modificar"
 })

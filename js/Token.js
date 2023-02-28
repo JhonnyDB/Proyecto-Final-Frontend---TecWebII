@@ -3,6 +3,8 @@ const url = 'http://localhost:3000/token'
 const contenedor = document.getElementById ('data')
 let resultado = ''
 
+//localStorage.setItem('Token', "Token")
+
 //              Mostrar datos de la tabla
 
 const CargarToken = (tokens)=>{
@@ -32,6 +34,7 @@ const on = (element, event, selector, handler) => {
 let operacion = "adicionar"
 
 formpro.addEventListener("submit", (e) => {
+
     e.preventDefault()
     if (operacion == "adicionar"){ 
     fetch(url, {method: "POST",
@@ -41,13 +44,7 @@ formpro.addEventListener("submit", (e) => {
                     Contraseña:Contraseña.value,
                 })
         })
-        try {
-            
-        } catch (error) {
-            
-        }
-            window.location.href = '../Index.html' 
+            .then(response => response.json())
+            .then(data => (sessionStorage.setItem('Token', data.token)))  
     }
 })
-
-

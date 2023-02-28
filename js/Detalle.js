@@ -11,8 +11,8 @@ const CargaDetalle = (detalles)=>{
         `<tr>
             <td class="table-dark">${detalle.NumDetalle}</td>
             <td class="table-dark">${detalle.Cantidad}</td>
-            <td class="table-dark">${detalle.PrecioTotal}</td>
-            <td class="table-dark">${detalle.NumPago}</td>
+            <td class="table-dark">${detalle.PrecioUnitario}</td>
+            <td class="table-dark">${detalle.IdProducto}</td>
             <td class="table-dark"><button type="submit" class="btn btn-danger btnDelete">Eliminar</button></td>
             <td class="table-dark"><button type="submit" class="btn btn-success btnEditar">Editar</button></td>
         </tr>`
@@ -53,8 +53,8 @@ formpro.addEventListener("submit", (e) => {
                 headers: {"Content-type":"application/json"},
                 body: JSON.stringify({
                     Cantidad:Cantidad.value,
-                    PrecioTotal:PrecioTotal.value,
-                    NumPago:NumPago.value,
+                    PrecioUnitario:PrecioUnitario.value,
+                    IdProducto:IdProducto.value,
                 })
         })
     .then(response => response.json())
@@ -69,8 +69,8 @@ formpro.addEventListener("submit", (e) => {
                     headers: {"Content-type":"application/json"},
                     body: JSON.stringify({
                         Cantidad:Cantidad.value,
-                        PrecioTotal:PrecioTotal.value,
-                        NumPago:NumPago.value,
+                        PrecioUnitario:PrecioUnitario.value,
+                        IdProducto:IdProducto.value,
                     })
             })
         .then(response => response.json())
@@ -90,12 +90,12 @@ on (document, 'click', '.btnEditar', e => {
     const fila = e.target.parentNode.parentNode
     id_form = fila.children[0].innerHTML
         const fCantidad = fila.children[1].innerHTML
-        const fPrecioTotal = fila.children[2].innerHTML
-        const fNumPago = fila.children[3].innerHTML
+        const fPrecioUnitario = fila.children[2].innerHTML
+        const fIdProducto = fila.children[3].innerHTML
 
         Cantidad.value = fCantidad
-        PrecioTotal.value = fPrecioTotal
-        NumPago.value = fNumPago
+        PrecioUnitario.value = fPrecioUnitario
+        IdProducto.value = fIdProducto
 
     operacion = "modificar"
 })

@@ -1,6 +1,6 @@
 
-const url = 'http://localhost:3000/reportes' 
-
+//const url = 'http://localhost:3000/reportes/1' 
+const url = 'http://localhost:3000/reportes/' 
 const contenedor = document.getElementById ('data')
 let resultado = ''
 
