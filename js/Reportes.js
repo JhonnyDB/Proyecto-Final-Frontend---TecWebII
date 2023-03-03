@@ -26,15 +26,22 @@ const CargaReporte = (reportes)=>{
     })
     contenedor.innerHTML = resultado
 }
-fetch(url)  
-    .then(response => response.json())
-    .then(data => CargaReporte (data))
-    .catch(error => console.log(error))    
-const on = (element, event, selector, handler) => {
-    element.addEventListener(event, e =>{
-        if(e.target.closest(selector)){
-            handler(e)
-        }
-    })
-} 
+const token = sessionStorage.getItem('Token');
 
+fetch(url, {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+    },
+    })
+    .then((response) => response.json())
+    .then((data) => CargaReporte(data))
+    .catch((error) => console.log(error));
+    const on = (element, event, selector, handler) => {
+        element.addEventListener(event, (e) => {
+            if (e.target.closest(selector)) {
+            handler(e);
+            }
+        });
+    };

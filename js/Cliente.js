@@ -1,41 +1,48 @@
-const { default: axios } = require("axios")
+const url = 'http://localhost:3000/cliente';
+const contenedor = document.getElementById('data');
+let resultado = '';
 
-const url = 'http://localhost:3000/cliente' 
-const contenedor = document.getElementById ('data')
-let resultado = ''
+const CargaCliente = (clientes) => {
+    clientes.forEach((cliente) => {
+    resultado += `
+        <tr>
+        <td class="table-dark">${cliente.IdCliente}</td>
+        <td class="table-dark">${cliente.NombreCliente}</td>
+        <td class="table-dark">${cliente.ApellidoCliente}</td>
+        <td class="table-dark">${cliente.Direccion}</td>
+        <td class="table-dark">${cliente.FechaNacimiento}</td>
+        <td class="table-dark">${cliente.Celular}</td>
+        <td class="table-dark">${cliente.Email}</td>
+        <td class="table-dark">${cliente.Pais}</td>
+        <td class="table-dark">${cliente.Ciudad}</td>
+        <td class="table-dark"><button type="submit" class="btn btn-danger btnDelete">Eliminar</button></td>
+        <td class="table-dark"><button type="submit" class="btn btn-success btnEditar">Editar</button></td>
+        </tr>
+    `;
+    });
+    contenedor.innerHTML = resultado;
+};
 
-//              Mostrar datos de la tabla
+const token = sessionStorage.getItem('Token');
 
-const CargaCliente = (clientes)=>{
-    clientes.forEach( cliente => {
-        resultado += 
-        `<tr>
-            <td class="table-dark">${cliente.IdCliente}</td>
-            <td class="table-dark">${cliente.NombreCliente}</td>
-            <td class="table-dark">${cliente.ApellidoCliente}</td>
-            <td class="table-dark">${cliente.Direccion}</td>
-            <td class="table-dark">${cliente.FechaNacimiento}</td>
-            <td class="table-dark">${cliente.Celular}</td>
-            <td class="table-dark">${cliente.Email}</td>
-            <td class="table-dark">${cliente.Pais}</td>
-            <td class="table-dark">${cliente.Ciudad}</td>
-            <td class="table-dark"><button type="submit" class="btn btn-danger btnDelete">Eliminar</button></td>
-            <td class="table-dark"><button type="submit" class="btn btn-success btnEditar">Editar</button></td>
-        </tr>`
+fetch(url, {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+    },
     })
-    contenedor.innerHTML = resultado
-}
-fetch(url)  
-    .then(response => response.json())
-    .then(data => CargaCliente (data))
-    .catch(error => console.log(error))    
-const on = (element, event, selector, handler) => {
-    element.addEventListener(event, e =>{
-        if(e.target.closest(selector)){
-            handler(e)
-        }
-    })
-} 
+    .then((response) => response.json())
+    .then((data) => CargaCliente(data))
+    .catch((error) => console.log(error));
+    const on = (element, event, selector, handler) => {
+        element.addEventListener(event, (e) => {
+            if (e.target.closest(selector)) {
+            handler(e);
+            }
+        });
+    };
+
 
 //              Eliminacion de datos de la tabla 
 
@@ -43,20 +50,28 @@ on (document, 'click', '.btnDelete', (e) => {
     console.log("Eliminacion realizada")
     fila = e.target.parentNode.parentNode
     const codigo = fila.firstElementChild.innerHTML
-    fetch(url + "/" + codigo, {method: "DELETE"})
+    fetch(url + "/" + codigo, {
+        method: "DELETE",
+        headers: {
+            Authorization: token,
+        }
+    })
     .then(response => response.json())
-    .then(() => location.reload ())
+    .then(() => location.reload())
 })
 
 //                 Agregar datos de la tabla
 
-let operacion = "adicionar"
+
 
 formpro.addEventListener("submit", (e) => {
     e.preventDefault()
     if (operacion == "adicionar"){ 
     fetch(url, {method: "POST",
-                headers: {"Content-type":"application/json"},
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+        },
                 body: JSON.stringify({
                     NombreCliente:NombreCliente.value,
                     ApellidoCliente:ApellidoCliente.value,
@@ -77,7 +92,10 @@ formpro.addEventListener("submit", (e) => {
     }
     if (operacion == "modificar"){ 
         fetch(url + '/' + id_form ,{method: "PUT",
-                    headers: {"Content-type":"application/json"},
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: token,
+            },
                     body: JSON.stringify({
                         NombreCliente:NombreCliente.value,
                         ApellidoCliente:ApellidoCliente.value,

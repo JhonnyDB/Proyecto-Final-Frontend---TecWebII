@@ -33,18 +33,32 @@ const on = (element, event, selector, handler) => {
 
 let operacion = "adicionar"
 
-formpro.addEventListener("submit", (e) => {
-
-    e.preventDefault()
-    if (operacion == "adicionar"){ 
-    fetch(url, {method: "POST",
+formpro.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (operacion == "adicionar") { 
+        try {
+            const response = await fetch(url, {
+                method: "POST",
                 headers: {"Content-type":"application/json"},
                 body: JSON.stringify({
-                    NombreDeUsuario:NombreDeUsuario.value,
-                    Contraseña:Contraseña.value,
+                    NombreDeUsuario: NombreDeUsuario.value,
+                    Contraseña: Contraseña.value,
                 })
-        })
-            .then(response => response.json())
-            .then(data => (sessionStorage.setItem('Token', data.token)))  
+            });
+
+            const data = await response.json();
+
+            sessionStorage.setItem('Token', data.token);
+            window.location.href = "../Index.html";
+
+        } catch (error) {
+            console.log(error);
+            location.reload();
+        }
     }
-})
+});
+
+
+function logout() {
+    sessionStorage.removeItem("Token");
+}

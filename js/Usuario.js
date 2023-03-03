@@ -19,17 +19,25 @@ const CargaUsuario = (usuarios)=>{
     })
     contenedor.innerHTML = resultado
 }
-fetch(url)  
-    .then(response => response.json())
-    .then(data => CargaUsuario (data))
-    .catch(error => console.log(error))    
-const on = (element, event, selector, handler) => {
-    element.addEventListener(event, e =>{
-        if(e.target.closest(selector)){
-            handler(e)
-        }
+const token = sessionStorage.getItem('Token');
+
+fetch(url, {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+    },
     })
-} 
+    .then((response) => response.json())
+    .then((data) => CargaUsuario(data))
+    .catch((error) => console.log(error));
+    const on = (element, event, selector, handler) => {
+        element.addEventListener(event, (e) => {
+            if (e.target.closest(selector)) {
+            handler(e);
+            }
+        });
+    };
 
 //              Eliminacion de datos de la tabla 
 
@@ -37,7 +45,12 @@ on (document, 'click', '.btnDelete', (e) => {
     console.log("Eliminacion realizada")
     fila = e.target.parentNode.parentNode
     const codigoU = fila.firstElementChild.innerHTML
-    fetch(url + "/" + codigoU, {method: "DELETE"})
+    fetch(url + "/" + codigoU, {
+        method: "DELETE",
+        headers: {
+            Authorization: token,
+        }
+    })
     .then(response => response.json())
     .then(() => location.reload ())
 })
@@ -50,7 +63,10 @@ formpro.addEventListener("submit", (e) => {
     e.preventDefault()
     if (operacion == "adicionar"){ 
     fetch(url, {method: "POST",
-                headers: {"Content-type":"application/json"},
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+        },
                 body: JSON.stringify({
                     NombreDeUsuario:NombreDeUsuario.value,
                     Contraseña:Contraseña.value,
@@ -66,7 +82,10 @@ formpro.addEventListener("submit", (e) => {
     }
     if (operacion == "modificar"){ 
         fetch(url + '/' + id_form ,{method: "PUT",
-                    headers: {"Content-type":"application/json"},
+                    headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+        },
                     body: JSON.stringify({
                         NombreDeUsuario:NombreDeUsuario.value,
                         Contraseña:Contraseña.value,

@@ -20,17 +20,26 @@ const CargaPago = (pagos)=>{
     })
     contenedor.innerHTML = resultado
 }
-fetch(url)  
-    .then(response => response.json())
-    .then(data => CargaPago (data))
-    .catch(error => console.log(error))    
-const on = (element, event, selector, handler) => {
-    element.addEventListener(event, e =>{
-        if(e.target.closest(selector)){
-            handler(e)
-        }
+const token = sessionStorage.getItem('Token');
+
+fetch(url, {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+    },
     })
-} 
+    .then((response) => response.json())
+    .then((data) => CargaPago(data))
+    .catch((error) => console.log(error));
+    const on = (element, event, selector, handler) => {
+        element.addEventListener(event, (e) => {
+            if (e.target.closest(selector)) {
+            handler(e);
+            }
+        });
+    };
+
 
 //              Eliminacion de datos de la tabla 
 
@@ -38,7 +47,12 @@ on (document, 'click', '.btnDelete', (e) => {
     console.log("Eliminacion realizada")
     fila = e.target.parentNode.parentNode
     const codigoPa = fila.firstElementChild.innerHTML
-    fetch(url + "/" + codigoPa, {method: "DELETE"})
+    fetch(url + "/" + codigoPa, {
+        method: "DELETE",
+        headers: {
+            Authorization: token,
+        }
+    })
     .then(response => response.json())
     .then(() => location.reload ())
 })
@@ -50,9 +64,12 @@ let operacion = "adicionar"
 formpro.addEventListener("submit", (e) => {
     e.preventDefault()
     if (operacion == "adicionar"){ 
-    fetch(url, {method: "POST",
-                headers: {"Content-type":"application/json"},
-                body: JSON.stringify({
+        fetch(url, {method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: token,
+            },
+                    body: JSON.stringify({
                     Fecha:Fecha.value,
                     ModoDePago:ModoDePago.value,
                     IdUsuario:IdUsuario.value,
@@ -68,7 +85,10 @@ formpro.addEventListener("submit", (e) => {
     }
     if (operacion == "modificar"){ 
         fetch(url + '/' + id_form ,{method: "PUT",
-                    headers: {"Content-type":"application/json"},
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: token,
+            },
                     body: JSON.stringify({
                         Fecha:Fecha.value,
                         ModoDePago:ModoDePago.value,
