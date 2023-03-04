@@ -62,6 +62,7 @@ on (document, 'click', '.btnDelete', (e) => {
 
 //                 Agregar datos de la tabla
 
+let operacion = "adicionar"
 
 
 formpro.addEventListener("submit", (e) => {

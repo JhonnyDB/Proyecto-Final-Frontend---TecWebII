@@ -45,12 +45,9 @@ formpro.addEventListener("submit", async (e) => {
                     Contraseña: Contraseña.value,
                 })
             });
-
             const data = await response.json();
-
             sessionStorage.setItem('Token', data.token);
             window.location.href = "../Index.html";
-
         } catch (error) {
             console.log(error);
             location.reload();

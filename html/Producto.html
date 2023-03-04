@@ -9,6 +9,7 @@
     <link rel = "stylesheet" href = "../estilos/bootstrap.css">
     <link rel="icon" href="../iconos/producto.png">
     <link rel="stylesheet" href="../estilos/footer_simple.css">
+
     <link rel = "stylesheet" href = "../estilos/text.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Productos</title>
@@ -63,33 +64,37 @@
     <center>
         <span class="text">Agregar productos</span><br><br>
     
-
-    <form class="form-switch .form-check-input" id = "formpro">
-
-        <div class="form-group">
-            <input class = "form-control" id="NombreProducto" placeholder="Nombre del Producto">
-        </div>
-        <div class="form-group">
-            <input class = "form-control" id="Marca" placeholder="Marca del producto">
-        </div>
-        <div class="form-group">
-            <input class = "form-control" id="PrecioU" placeholder="Precio Unitario">
-        </div>
-        <div class="form-group">
-            <input class = "form-control" id="Stock" placeholder="Stock">
-        </div>
-        <div class="form-group">
-            <input class = "form-control" id="IdCategoria" placeholder="Id de Categoria perteneciente">
-        </div>
-        
-        
-        <button type="submit" class="btn btn-primary button">Guardar</button><br><br>
+        <form class="form-switch .form-check-input" id="formpro">
+            <div class="form-group">
+                <input class="form-control" id="NombreProducto" name="NombreProducto" placeholder="Nombre del Producto">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="Marca" name="Marca" placeholder="Marca del producto">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="PrecioU" name="PrecioU" placeholder="Precio Unitario">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="Stock" name="Stock" placeholder="Stock">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="IdCategoria" name="IdCategoria" placeholder="Id de Categoria perteneciente">
+            </div>
+            <div class="form-group">
+                <label for="Imagen">Imagen del producto:</label>
+                <br><br>
+                <input class="form-control" type="file" id="Imagen">
+                <br>
+                <img id="imagenProductoPreview" src="" alt="Vista previa de la imagen del producto" style="max-width: 200px; max-height: 200px; margin-top: 10px;">
+                <br><br>
+            </div>
+            <button type="submit" class="btn btn-primary button">Guardar</button><br><br>
     </form>
+
     <br><br>
 </center>
 
     <table class = "table">
-        
         <thead>
             <td><h5>Id del Producto</h5></td>
             <td><h5>Nombre del Producto</h5></td>
@@ -97,12 +102,13 @@
             <td><h5>Precio Unitario</h5></td>
             <td><h5>Stock</h5></td>
             <td><h5>Id de Categoria</h5></td>
-
+            <td><h5>Imagen</h5></td>
             <td><h5>Eliminar / Editar</h5></td>
-    </thead>
+        </thead>
             <tbody id = 'data'>
             </tbody>
     </table>
+    
 <br><br>
 <br>
 

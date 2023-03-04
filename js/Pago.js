@@ -124,3 +124,27 @@ on (document, 'click', '.btnEditar', e => {
 
     operacion = "modificar"
 })
+
+function obtenerFechaString(Fecha) {
+    var year = Fecha.getFullYear();
+    var month = Fecha.getMonth() + 1;
+    var day = Fecha.getDate();
+    
+
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (day < 10) {
+        day = "0" + day;
+    }
+    
+    return year + "-" + month + "-" + day;
+}
+
+var inputFecha = document.getElementById("Fecha");
+var seleccionFecha = document.getElementById("seleccion-Fecha");
+
+inputFecha.addEventListener("change", function() {
+    var Fecha = new Date(inputFecha.value);
+    seleccionFecha.innerHTML = "Fecha seleccionada: " + obtenerFechaString(Fecha);
+});

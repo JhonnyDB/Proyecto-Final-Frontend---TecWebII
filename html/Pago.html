@@ -67,10 +67,14 @@
     <form class="form-switch .form-check-input" id = "formpro">
 
         <div class="form-group">
-            <input class = "form-control" id="Fecha" placeholder="Fecha de pago">
+            <input class = "form-control" id="Fecha" placeholder="Fecha de pago" type="date">
         </div>
         <div class="form-group">
-            <input class = "form-control" id="ModoDePago" placeholder="Modo de Pago 1/2/3">
+            <select class="form-control" id="ModoDePago" name="ModoDePago">
+                <option value="1">Transferencia</option>
+                <option value="2">Pago QR</option>
+                <option value="3">Tigo Money</option>
+            </select>
         </div>
         <div class="form-group">
             <input class = "form-control" id="IdUsuario" placeholder="Id del usuario que realizara el pago">
