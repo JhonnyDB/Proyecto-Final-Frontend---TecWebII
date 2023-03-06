@@ -9,9 +9,19 @@
     <link rel = "stylesheet" href = "../estilos/bootstrap.css">
     <link rel="stylesheet" href="../estilos/footer_simple.css">
     <link rel = "stylesheet" href = "../estilos/text.css">
+    <link rel="stylesheet" href="../estilos/music.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="icon" href="../iconos/cliente.png">
     <title>Clientes</title>
+
+    <style>
+        body {
+            background-image: url("https://c.wallhere.com/photos/c2/74/anime_anime_girls_vertical_wings_hairbun_pink_hair_yellow_eyes_Misono_Mika-2215088.jpg!d");
+            background-size: cover;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -24,7 +34,7 @@
     <div class="collapse navbar-collapse" >
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../Index.html">Inicio</a>
+                    <a class="nav-link" href="../html/Index.html">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../html/Cliente.html">Cliente</a> 
@@ -39,10 +49,10 @@
                 <a class="nav-link" href="../html/Producto.html">Productos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../html/Detalle.html">Detalle de Pago</a>
+                <a class="nav-link" href="../html/Pago.html">Pagos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../html/Pago.html">Pagos</a>
+                <a class="nav-link" href="../html/Detalle.html">Detalle de Pago</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../html/Reportes.html">Reporte General</a>
@@ -52,7 +62,7 @@
             </li>
             </ul>
             <form class="d-flex">
-            <a target="" class="fcc-btn" href="../login.html">Logout</a>  
+                <a class="fcc-btn" id="logout-btn" href="../welcome.html" onclick="logout()">Logout</a>
             </form>
         </div>
         </div>
@@ -115,9 +125,13 @@
             </tbody>
     </table>
 <br><br>
-<br>
 
-    <br><br>
+<audio id="myAudio" autoplay loop controls="none">
+    <source src="../img/music/fondo-music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="../js/music.js"></script>
+
     <script src = "../js/Cliente.js"></script>
 
     <div class="footer">

@@ -99,3 +99,7 @@ fetch(url, {
     .then((data) => CargaReporteF(data))
     .catch((error) => console.log(error));
 });
+
+function logout() {
+    sessionStorage.removeItem("Token");
+}

@@ -39,18 +39,32 @@ fetch(url, {
 
 //              Eliminacion de datos de la tabla 
 
-on (document, 'click', '.btnDelete', (e) => { 
+//              Eliminacion de datos de la tabla 
+
+on(document, 'click', '.btnDelete', (e) => { 
     console.log("Eliminacion realizada")
-    fila = e.target.parentNode.parentNode
-    const codigoCa = fila.firstElementChild.innerHTML
-    fetch(url + "/" + codigoCa, {
-        method: "DELETE",
-        headers: {
+    
+    Swal.fire({
+        title: '¿Estás seguro de que deseas eliminar esta Categoria?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+        fila = e.target.parentNode.parentNode
+        const codigoCa = fila.firstElementChild.innerHTML
+        fetch(url + "/" + codigoCa, {
+            method: "DELETE",
+            headers: {
             Authorization: token,
         }
+        })
+        .then(response => response.json())
+        .then(() => location.reload ())
+        }
     })
-    .then(response => response.json())
-    .then(() => location.reload ())
 })
 
 //                 Agregar datos de la tabla
@@ -74,7 +88,7 @@ formpro.addEventListener("submit", (e) => {
         const nueva_categoria = []
         nueva_categoria.push(data)
     })
-    .then(() => location.reload ()) 
+    
     }
     if (operacion == "modificar"){ 
         fetch(url + '/' + id_form ,{method: "PUT",
@@ -91,7 +105,7 @@ formpro.addEventListener("submit", (e) => {
             const nueva_categoria = []
             nueva_categoria.push(data)
         })
-        .then(() => location.reload ()) 
+        
         }
 })
 
@@ -108,3 +122,35 @@ on (document, 'click', '.btnEditar', e => {
 
     operacion = "modificar"
 })
+
+const form = document.querySelector('#formpro');
+const descripcionc = document.querySelector('#DescripcionCategoria');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (descripcionc.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese una Descripcion para la categoria.'
+        });
+        return;
+    }
+
+    Swal.fire({
+        icon: 'success',
+        title: '¡Formulario enviado con éxito!',
+        showConfirmButton: true,
+        confirmButtonText: 'OK'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.submit();
+        }
+    });
+});
+
+function logout() {
+    sessionStorage.removeItem("Token");
+}
+

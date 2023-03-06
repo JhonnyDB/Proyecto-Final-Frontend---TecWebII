@@ -47,7 +47,7 @@ formpro.addEventListener("submit", async (e) => {
             });
             const data = await response.json();
             sessionStorage.setItem('Token', data.token);
-            window.location.href = "../Index.html";
+            window.location.href = "../welcome.html";
         } catch (error) {
             console.log(error);
             location.reload();
@@ -55,7 +55,13 @@ formpro.addEventListener("submit", async (e) => {
     }
 });
 
-
 function logout() {
     sessionStorage.removeItem("Token");
 }
+
+window.addEventListener('beforeunload', function(event) {
+    if (sessionStorage.getItem('token')) {
+        sessionStorage.removeItem('token');
+        location.assign('../html/login.html');
+    }
+});

@@ -7,19 +7,79 @@
     font-family: verdana;
     font-size: 8em;
     font-weight: 700;
-    color: #f5f5f5;
-    text-shadow: 1px 1px 1px #919191,
+    color: #cca0cc;
+    text-shadow: 1px 1px 1px #f4e6e6,
         1px 2px 1px #919191,
-        1px 3px 1px #919191,
-        1px 4px 1px #919191,
-        1px 5px 1px #919191,
-        1px 6px 1px #919191,
-        1px 7px 1px #919191,
-        1px 8px 1px #919191,
-        1px 9px 1px #919191,
-        1px 10px 1px #919191,
+        1px 3px 1px #ffffff,
+        1px 4px 1px #f4f2f2,
+        1px 5px 1px #fafafa,
+        1px 6px 1px #f0eded,
+        1px 7px 1px #f6eeee,
+        1px 8px 1px #e3e0e0,
+        1px 9px 1px #ede8e8,
+        1px 10px 1px #f6f2f2,
     1px 18px 6px rgba(16,16,16,0.4),
     1px 22px 10px rgba(16,16,16,0.2),
     1px 25px 35px rgba(16,16,16,0.2),
     1px 30px 60px rgba(16,16,16,0.4);
+}
+
+.container {
+    margin-left: 5cm;
+    margin-right: -15cm;
+}
+.report-form {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.report-form {
+    background-color: #292727c5;
+    border-radius: 5px;
+    color: white;
+    padding: 40px 40px 40px 40px;
+    width: 640px;
+}
+
+
+.report-form h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    max-width: 89cm;
+}
+
+.form-group label {
+    
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="date"] {
+    width: 13cm;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px;
+    font-size: 16px;
+}
+
+.form-group button[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    width: 13cm;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-group button[type="submit"]:hover {
+    background-color: #0069d9;
 }

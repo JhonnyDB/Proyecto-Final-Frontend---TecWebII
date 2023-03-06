@@ -7,12 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "../estilos/bootstrap.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="icon" href="../iconos/producto.png">
     <link rel="stylesheet" href="../estilos/footer_simple.css">
-
+    <link rel="stylesheet" href="../estilos/music.css">
     <link rel = "stylesheet" href = "../estilos/text.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Productos</title>
+
+    <style>
+        body {
+            background-image: url("https://c.wallhere.com/photos/9f/d0/YUTOU_video_games_video_game_girls_Genshin_Impact_Raiden_Shogun_Genshin_Impact_purple_eyes_purple_hair_flowers-2132317.jpg!d");
+            background-size: cover;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -25,7 +34,7 @@
     <div class="collapse navbar-collapse" >
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../Index.html">Inicio</a>
+                    <a class="nav-link" href="../html/Index.html">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../html/Cliente.html">Cliente</a> 
@@ -40,10 +49,10 @@
                 <a class="nav-link" href="../html/Producto.html">Productos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../html/Detalle.html">Detalle de Pago</a>
+                <a class="nav-link" href="../html/Pago.html">Pagos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../html/Pago.html">Pagos</a>
+                <a class="nav-link" href="../html/Detalle.html">Detalle de Pago</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../html/Reportes.html">Reporte General</a>
@@ -53,7 +62,7 @@
             </li>
             </ul>
             <form class="d-flex">
-            <a target="" class="fcc-btn" href="../login.html">Logout</a>  
+                <a class="fcc-btn" id="logout-btn" href="../welcome.html" onclick="logout()">Logout</a>
             </form>
         </div>
         </div>
@@ -64,7 +73,7 @@
     <center>
         <span class="text">Agregar productos</span><br><br>
     
-        <form class="form-switch .form-check-input" id="formpro">
+        <form class="form-switch .form-check-input" id="formpro" >
             <div class="form-group">
                 <input class="form-control" id="NombreProducto" name="NombreProducto" placeholder="Nombre del Producto">
             </div>
@@ -85,12 +94,13 @@
                 <br><br>
                 <input class="form-control" type="file" id="Imagen">
                 <br>
-                <img id="imagenProductoPreview" src="" alt="Vista previa de la imagen del producto" style="max-width: 200px; max-height: 200px; margin-top: 10px;">
+                <img id="imagenProductoPreview" src="https://us.123rf.com/450wm/dxinerz/dxinerz1603/dxinerz160301844/53178681-insertar-imagen-el-color-del-icono-del-vector-image-can-tambi%C3%A9n-ser-utilizado-para-la-edici%C3%B3n-de.jpg?ver=6" alt="Vista previa de la imagen del producto" style="max-width: 200px; max-height: 200px; margin-top: 10px;">
                 <br><br>
             </div>
             <button type="submit" class="btn btn-primary button">Guardar</button><br><br>
     </form>
 
+    
     <br><br>
 </center>
 
@@ -110,12 +120,17 @@
     </table>
     
 <br><br>
-<br>
 
-    <br><br>
+<audio id="myAudio" autoplay loop controls="none">
+    <source src="../img/music/fondo-music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="../js/music.js"></script>
+
     <script src = "../js/Producto.js"></script>
 
     <div class="footer">
+        
         <div class="footer-content">
             <h3 class="footer_title">Sobre la Empresa</h3>
             <p>Seremos la principal empresa en importación y distribución de tecnología ampliaremos nuestra infraestructura a nivel nacional para ofrecer una mejor cobertura y mejorar el servicio al cliente posicionándonos en el mercado como la empresa más reconocida en el sector tecnológico</p>

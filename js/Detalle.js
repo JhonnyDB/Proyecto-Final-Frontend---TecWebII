@@ -11,8 +11,8 @@ const CargaDetalle = (detalles)=>{
         `<tr>
             <td class="table-dark">${detalle.NumDetalle}</td>
             <td class="table-dark">${detalle.Cantidad}</td>
-            <td class="table-dark">${detalle.PrecioUnitario}</td>
             <td class="table-dark">${detalle.IdProducto}</td>
+            <td class="table-dark">${detalle.NumPago}</td>
             <td class="table-dark"><button type="submit" class="btn btn-danger btnDelete">Eliminar</button></td>
             <td class="table-dark"><button type="submit" class="btn btn-success btnEditar">Editar</button></td>
         </tr>`
@@ -42,18 +42,30 @@ fetch(url, {
 
 //              Eliminacion de datos de la tabla 
 
-on (document, 'click', '.btnDelete', (e) => { 
+on(document, 'click', '.btnDelete', (e) => { 
     console.log("Eliminacion realizada")
-    fila = e.target.parentNode.parentNode
-    const codigoPa = fila.firstElementChild.innerHTML
-    fetch(url + "/" + codigoPa, {
-        method: "DELETE",
-        headers: {
+    
+    Swal.fire({
+        title: '¿Estás seguro de que deseas eliminar este Detalle?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+        fila = e.target.parentNode.parentNode
+        const codigoPa = fila.firstElementChild.innerHTML
+        fetch(url + "/" + codigoPa, {
+            method: "DELETE",
+            headers: {
             Authorization: token,
         }
+        })
+        .then(response => response.json())
+        .then(() => location.reload ())
+        }
     })
-    .then(response => response.json())
-    .then(() => location.reload ())
 })
 
 //                 Agregar datos de la tabla
@@ -70,8 +82,8 @@ formpro.addEventListener("submit", (e) => {
             },
                     body: JSON.stringify({
                     Cantidad:Cantidad.value,
-                    PrecioUnitario:PrecioUnitario.value,
                     IdProducto:IdProducto.value,
+                    NumPago:NumPago.value,
                 })
         })
     .then(response => response.json())
@@ -79,7 +91,7 @@ formpro.addEventListener("submit", (e) => {
         const nuevo_detalle = []
         nuevo_detalle.push(data)
     })
-    .then(() => location.reload ()) 
+    
     }
     if (operacion == "modificar"){ 
         fetch(url + '/' + id_form ,{method: "PUT",
@@ -89,8 +101,8 @@ formpro.addEventListener("submit", (e) => {
             },
                     body: JSON.stringify({
                         Cantidad:Cantidad.value,
-                        PrecioUnitario:PrecioUnitario.value,
                         IdProducto:IdProducto.value,
+                        NumPago:NumPago.value,
                     })
             })
         .then(response => response.json())
@@ -98,7 +110,7 @@ formpro.addEventListener("submit", (e) => {
             const nuevo_detalle = []
             nuevo_detalle.push(data)
         })
-        .then(() => location.reload ()) 
+        
         }
 })
 
@@ -110,12 +122,65 @@ on (document, 'click', '.btnEditar', e => {
     const fila = e.target.parentNode.parentNode
     id_form = fila.children[0].innerHTML
         const fCantidad = fila.children[1].innerHTML
-        const fPrecioUnitario = fila.children[2].innerHTML
-        const fIdProducto = fila.children[3].innerHTML
+        const fIdProducto = fila.children[2].innerHTML
+        const fNumPago = fila.children[3].innerHTML
 
         Cantidad.value = fCantidad
-        PrecioUnitario.value = fPrecioUnitario
         IdProducto.value = fIdProducto
+        NumPago.value = fNumPago
 
     operacion = "modificar"
 })
+
+
+const form = document.querySelector('#formpro');
+const cantidad = document.querySelector('#Cantidad');
+const idproducto = document.querySelector('#IdProducto');
+const numpago = document.querySelector('#NumPago');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (cantidad.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese un Cantidad para el detalle.'
+        });
+        return;
+    }
+
+    if (idproducto.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese el id del producto.'
+        });
+        return;
+    }
+
+    if (numpago.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese el numero de pago.'
+        });
+        return;
+    }
+
+    Swal.fire({
+        icon: 'success',
+        title: '¡Formulario enviado con éxito!',
+        showConfirmButton: true,
+        confirmButtonText: 'OK'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.submit();
+        }
+    });
+});
+
+
+function logout() {
+    sessionStorage.removeItem("Token");
+}

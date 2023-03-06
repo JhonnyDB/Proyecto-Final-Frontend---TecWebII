@@ -10,8 +10,17 @@
     <link rel="icon" href="../iconos/detalle.png">
     <link rel="stylesheet" href="../estilos/footer_simple.css">
     <link rel = "stylesheet" href = "../estilos/text.css">
+    <link rel="stylesheet" href="../estilos/music.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Reporte por Fechas</title>
+
+    <style>
+        body {
+            background-image: url("https://c.wallhere.com/photos/35/c2/anime_anime_girls-2079925.jpg!d");
+            background-size: cover;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -24,7 +33,7 @@
     <div class="collapse navbar-collapse" >
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../Index.html">Inicio</a>
+                    <a class="nav-link" href="../html/Index.html">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../html/Cliente.html">Cliente</a> 
@@ -39,10 +48,10 @@
                 <a class="nav-link" href="../html/Producto.html">Productos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../html/Detalle.html">Detalle de Pago</a>
+                <a class="nav-link" href="../html/Pago.html">Pagos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../html/Pago.html">Pagos</a>
+                <a class="nav-link" href="../html/Detalle.html">Detalle de Pago</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../html/Reportes.html">Reporte General</a>
@@ -52,23 +61,36 @@
             </li>
             </ul>
             <form class="d-flex">
-            <a target="" class="fcc-btn" href="../login.html">Logout</a>  
+                <a class="fcc-btn" id="logout-btn" href="../welcome.html" onclick="logout()">Logout</a>
             </form>
         </div>
         </div>
     </nav>
 <br><br>
     <center>
-        <span class="text">reporte por rango de fechas</span><br><br><br>
+        <span class="text">reporte por fechas</span><br><br><br>
     </center>
 
+    <div class="container">
     <form id="form-reporte" class="report-form">
-        <label for="fecha-inicio">Fecha inicio:</label>
-        <input type="date" id="fecha-inicio" name="fecha-inicio">
-        <label for="fecha-fin">Fecha fin:</label>
-        <input type="date" id="fecha-fin" name="fecha-fin">
-        <button type="submit">Generar reporte</button>
+        <br>
+        <h2 style="color: white;">Generar Reporte</h2>
+        <div class="form-group">
+            <label for="fecha-inicio">Fecha inicio:</label>
+            <input type="date" id="fecha-inicio" name="fecha-inicio">
+        </div>
+        <div class="form-group">
+            <label for="fecha-fin">Fecha fin:</label>
+            <input type="date" id="fecha-fin" name="fecha-fin">
+        </div>
+        <br>
+        <div class="form-group">
+            <button type="submit">Generar reporte</button>
+        </div>
     </form>
+</div>
+<br><br>
+
     <br><br>
     <table class = "table">
         
@@ -93,14 +115,15 @@
             </tbody>
     </table>
 
-<br><br>
+    <audio id="myAudio" autoplay loop controls="none">
+        <source src="../img/music/fondo-music.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script src="../js/music.js"></script>
+    
 
     <script src = "../js/ReporteFecha.js"></script>
 
-    <center>
-        <img src="https://www.salesforce.com/content/dam/web/es_mx/blog/reporte-de-ventas.jpg" alt="" width="1200cm" height="500cm">
-        <br> <br> <br> <br>
-    </center>
 
     <div class="footer">
         <div class="footer-content">

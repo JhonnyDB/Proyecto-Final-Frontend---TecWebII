@@ -1,8 +1,8 @@
 :root{
-    --azul:#134074d8;
-    --azulOscuro:#0B2545;
+    --azul:#d2c7d2d8;
+    --azulOscuro:#000000;
     --azulGris:#2587e2;
-    --blanco:#fff;
+    --blanco:#000000;
     --fuente:'Quicksand', sans-serif;
 }
 html{
@@ -15,15 +15,16 @@ html{
 
 body{
     font-family: var(--fuente);
-    background-image: url("https://get.wallhere.com/photo/anime-anime-girls-Hatsune-Miku-Vocaloid-twintails-closed-eyes-tears-blue-hair-clouds-2196927.jpg");
+    background-image: url("../img/CGmFtrPl_2x.jpg");
+    background-size: cover;
     display: flex;
     align-items: center;
     height: 100vh;
 }
 
 .contenedor{
-    margin: 0 auto;
-    max-width: 1200px;
+    margin: 0 5cm;
+    max-width: 550px;
     width: 95%;
 }
 
@@ -37,20 +38,20 @@ body{
     
 }
 .imagen-formulario::before{
-   content: '';
-   position: absolute;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   background: linear-gradient(to right,rgba(141,169,196,.5), rgba(19, 64, 116, .5) );
-   
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to left ,rgba(253, 253, 253, 0.5), rgba(255, 255, 255, 0.5) );
+  
 }
 
 @media(min-width:768px){
     .imagen-formulario{
         height: auto;
-        background-position: right;
+        background-position: left;
     }
 
 }
@@ -99,18 +100,18 @@ body{
     outline: none;
 }
 .input input[type="submit"]{
-    background-color: var(--azulGris);
-    color: var(--blanco);
+    background-color: #b690b6d8;
+    color: rgb(0, 0, 0);
     font-size: 22px;
     font-weight: bold;
     border: none;
     margin-top: 20px;
-    transition: background-color .3s ease-in-out;
+    transition: background-color .1s ease-in-out;
 }
 .input input[type="submit"]:hover{
-  
     cursor: pointer;
-    background-color:rgb(146, 183, 226);
+    background-color:rgb(0, 0, 0);
+    color: white;
 }
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 

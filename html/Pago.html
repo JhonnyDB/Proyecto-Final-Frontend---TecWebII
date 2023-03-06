@@ -9,9 +9,19 @@
     <link rel = "stylesheet" href = "../estilos/bootstrap.css">
     <link rel="stylesheet" href="../estilos/footer_simple.css">
     <link rel = "stylesheet" href = "../estilos/text.css">
+    <link rel="stylesheet" href="../estilos/music.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="icon" href="../iconos/pago.png">
     <title>Pago de producto</title>
+
+    <style>
+        body {
+            background-image: url("https://i.pinimg.com/originals/17/e0/23/17e023eb814434016e50a779c15104fc.jpg");
+            background-size: cover;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -24,7 +34,7 @@
     <div class="collapse navbar-collapse" >
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../Index.html">Inicio</a>
+                    <a class="nav-link" href="../html/Index.html">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../html/Cliente.html">Cliente</a> 
@@ -39,10 +49,10 @@
                 <a class="nav-link" href="../html/Producto.html">Productos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../html/Detalle.html">Detalle de Pago</a>
+                <a class="nav-link" href="../html/Pago.html">Pagos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../html/Pago.html">Pagos</a>
+                <a class="nav-link" href="../html/Detalle.html">Detalle de Pago</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../html/Reportes.html">Reporte General</a>
@@ -52,7 +62,7 @@
             </li>
             </ul>
             <form class="d-flex">
-            <a target="" class="fcc-btn" href="../login.html">Logout</a>  
+                <a class="fcc-btn" id="logout-btn" href="../welcome.html" onclick="logout()">Logout</a>
             </form>
         </div>
         </div>
@@ -67,7 +77,7 @@
     <form class="form-switch .form-check-input" id = "formpro">
 
         <div class="form-group">
-            <input class = "form-control" id="Fecha" placeholder="Fecha de pago" type="date">
+            <input class = "form-control" id="Fecha" placeholder="Fecha de pago" type="date" style="width: 14.7cm;">
         </div>
         <div class="form-group">
             <select class="form-control" id="ModoDePago" name="ModoDePago">
@@ -79,11 +89,7 @@
         <div class="form-group">
             <input class = "form-control" id="IdUsuario" placeholder="Id del usuario que realizara el pago">
         </div>
-        <div class="form-group">
-            <input class = "form-control" id="NumDetalle" placeholder="Numero de detalle perteneciente">
-        </div>
-        
-        
+
         <button type="submit" class="btn btn-primary button">Guardar</button><br><br>
     </form>
     <br><br>
@@ -96,7 +102,6 @@
             <td><h5>Fecha de pago</h5></td>
             <td><h5>Modo de Pago 1/2/3</h5></td>
             <td><h5>Id del usuario que pago</h5></td>
-            <td><h5>Num Detalle</h5></td>
 
             <td><h5>Eliminar / Editar</h5></td>
     </thead>
@@ -104,9 +109,13 @@
             </tbody>
     </table>
 <br><br>
-<br>
 
-    <br><br>
+<audio id="myAudio" autoplay loop controls="none">
+    <source src="../img/music/fondo-music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="../js/music.js"></script>
+
     <script src = "../js/Pago.js"></script>
 
     <div class="footer">
@@ -122,7 +131,7 @@
             </ul>
         </div>
     </div>
-
+    
 </body>
 
 </html>

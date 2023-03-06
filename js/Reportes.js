@@ -45,3 +45,8 @@ fetch(url, {
             }
         });
     };
+
+    function logout() {
+        sessionStorage.removeItem("Token");
+    }
+    

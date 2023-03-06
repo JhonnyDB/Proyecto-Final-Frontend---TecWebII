@@ -47,18 +47,30 @@ fetch(url, {
 
 //              Eliminacion de datos de la tabla 
 
-on (document, 'click', '.btnDelete', (e) => { 
+on(document, 'click', '.btnDelete', (e) => { 
     console.log("Eliminacion realizada")
-    fila = e.target.parentNode.parentNode
-    const codigoPr = fila.firstElementChild.innerHTML
-    fetch(url + "/" + codigoPr, {
-        method: "DELETE",
-        headers: {
+    
+    Swal.fire({
+        title: '¿Estás seguro de que deseas eliminar este Producto?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+        fila = e.target.parentNode.parentNode
+        const codigoPr = fila.firstElementChild.innerHTML
+        fetch(url + "/" + codigoPr, {
+            method: "DELETE",
+            headers: {
             Authorization: token,
         }
+        })
+        .then(response => response.json())
+        .then(() => location.reload ())
+        }
     })
-    .then(response => response.json())
-    .then(() => location.reload ())
 })
 
 //                 Agregar datos de la tabla
@@ -85,7 +97,7 @@ formpro.addEventListener("submit", (e) => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                location.reload()
+                
             })
     } else if (operacion === "modificar") {
         const requestOptions = {
@@ -100,7 +112,7 @@ formpro.addEventListener("submit", (e) => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                location.reload()
+                
             })
     }
 })
@@ -130,9 +142,6 @@ on (document, 'click', '.btnEditar', e => {
     operacion = "modificar"
 })
 
-
-
-
 const inputImagen = document.getElementById("Imagen")
 const imagenPreview = document.getElementById("imagenProductoPreview")
 
@@ -146,3 +155,85 @@ inputImagen.addEventListener("change", (e) => {
 
     reader.readAsDataURL(file)
 })
+
+
+const form = document.querySelector('#formpro');
+const nombreproducto = document.querySelector('#NombreProducto');
+const marca = document.querySelector('#Marca');
+const preciou = document.querySelector('#PrecioU');
+const stock = document.querySelector('#Stock');
+const idcategoria = document.querySelector('#IdCategoria');
+const imagen = document.querySelector('#Imagen');
+
+
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (nombreproducto.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese un Nombre para el producto.'
+        });
+        return;
+    }
+
+    if (marca.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese una marca.'
+        });
+        return;
+    }
+
+    if (preciou.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese el precio.'
+        });
+        return;
+    }
+    if (stock.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese el stock.'
+        });
+        return;
+    }
+    if (idcategoria.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese el Id de categoria.'
+        });
+        return;
+    }
+    if (imagen.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese una imagen.'
+        });
+        return;
+    }
+
+    Swal.fire({
+        icon: 'success',
+        title: '¡Formulario enviado con éxito!',
+        showConfirmButton: true,
+        confirmButtonText: 'OK'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.submit();
+        }
+    });
+});
+
+
+function logout() {
+    sessionStorage.removeItem("Token");
+}

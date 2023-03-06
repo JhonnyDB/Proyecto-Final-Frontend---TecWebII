@@ -1,11 +1,19 @@
-
-.cards-god{
+.cards-god {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
 }
+
 
 .cards{
     display: flex;
     font-weight: 100;
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    max-width: 300p;
 }
 
 @media (max-width: 860.98px) {
@@ -51,9 +59,8 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    background: rgb(0, 0, 0);
-    box-sizing: border-box;
-    padding: 20px;
+    background: rgb(169, 152, 152);
+    padding: 15px;
 }
 
 .cards .title {

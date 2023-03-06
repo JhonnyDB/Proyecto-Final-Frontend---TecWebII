@@ -180,3 +180,7 @@ form.addEventListener('submit', function(event) {
         }
     });
 });
+
+function logout() {
+    sessionStorage.removeItem("Token");
+}

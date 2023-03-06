@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../estilos/login.css">
+    <link rel="stylesheet" href="../estilos/music.css">
+    <link rel="icon" href="../iconos/login.png">
+
+</head>
+
+<body>
+
+    <div class="contenedor-formulario contenedor" id="formpro">
+        
+        <form class="formulario">
+            <div class="texto-formulario">
+                <h2>Bienvenido a nuestra pagina</h2>
+                <p>Inicia sesión con tu cuenta .3. para tener acceso a todas nuestras opciones</p>
+            </div>
+            <div class="input">
+                <label for="usuario">Usuario</label>
+                <input placeholder="Ingresa tu nombre" type="text" id="NombreDeUsuario">
+            </div>
+            <div class="input">
+                <label for="contraseña">Contraseña</label>
+                <input placeholder="Ingresa tu contraseña" type="password" id="Contraseña">
+            </div>
+            <div class="password-olvidada">
+                <br>
+            </div>
+            <h4 style="color: rgb(0, 0, 0); text-align: center;" >En caso que inicies sesion sin usuario existente no podras acceder a todas nuestras opciones</h4>
+            <div class="input">
+                <input type="submit" value="Login">
+            </div>
+
+            <div class="imagen-formulario">
+            
+            </div>
+        </form>
+    </div>
+
+    <br>
+
+    <script src = "../js/Token.js"></script>
+
+</body>
+
+<audio id="myAudio" autoplay loop controls="none">
+    <source src="../img/music/fondo-music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="../js/music.js"></script>
+
+</html>

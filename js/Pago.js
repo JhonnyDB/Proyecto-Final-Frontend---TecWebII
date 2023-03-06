@@ -13,7 +13,6 @@ const CargaPago = (pagos)=>{
             <td class="table-dark">${pago.Fecha}</td>
             <td class="table-dark">${pago.ModoDePago}</td>
             <td class="table-dark">${pago.IdUsuario}</td>
-            <td class="table-dark">${pago.NumDetalle}</td>
             <td class="table-dark"><button type="submit" class="btn btn-danger btnDelete">Eliminar</button></td>
             <td class="table-dark"><button type="submit" class="btn btn-success btnEditar">Editar</button></td>
         </tr>`
@@ -43,18 +42,31 @@ fetch(url, {
 
 //              Eliminacion de datos de la tabla 
 
-on (document, 'click', '.btnDelete', (e) => { 
+
+on(document, 'click', '.btnDelete', (e) => { 
     console.log("Eliminacion realizada")
-    fila = e.target.parentNode.parentNode
-    const codigoPa = fila.firstElementChild.innerHTML
-    fetch(url + "/" + codigoPa, {
-        method: "DELETE",
-        headers: {
+    
+    Swal.fire({
+        title: '¿Estás seguro de que deseas eliminar este Pago?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+        fila = e.target.parentNode.parentNode
+        const codigoPa = fila.firstElementChild.innerHTML
+        fetch(url + "/" + codigoPa, {
+            method: "DELETE",
+            headers: {
             Authorization: token,
         }
+        })
+        .then(response => response.json())
+        .then(() => location.reload ())
+        }
     })
-    .then(response => response.json())
-    .then(() => location.reload ())
 })
 
 //                 Agregar datos de la tabla
@@ -73,7 +85,6 @@ formpro.addEventListener("submit", (e) => {
                     Fecha:Fecha.value,
                     ModoDePago:ModoDePago.value,
                     IdUsuario:IdUsuario.value,
-                    NumDetalle:NumDetalle.value,
                 })
         })
     .then(response => response.json())
@@ -81,7 +92,7 @@ formpro.addEventListener("submit", (e) => {
         const nuevo_pago = []
         nuevo_pago.push(data)
     })
-    .then(() => location.reload ()) 
+    
     }
     if (operacion == "modificar"){ 
         fetch(url + '/' + id_form ,{method: "PUT",
@@ -93,7 +104,6 @@ formpro.addEventListener("submit", (e) => {
                         Fecha:Fecha.value,
                         ModoDePago:ModoDePago.value,
                         IdUsuario:IdUsuario.value,
-                        NumDetalle:NumDetalle.value,
                     })
             })
         .then(response => response.json())
@@ -101,7 +111,7 @@ formpro.addEventListener("submit", (e) => {
             const nuevo_pago = []
             nuevo_pago.push(data)
         })
-        .then(() => location.reload ()) 
+        
         }
 })
 
@@ -115,12 +125,10 @@ on (document, 'click', '.btnEditar', e => {
         const fFecha = fila.children[1].innerHTML
         const fModoDePago = fila.children[2].innerHTML
         const fIdUsuario = fila.children[3].innerHTML
-        const fNumDetalle = fila.children[4].innerHTML
 
         Fecha.value = fFecha
         ModoDePago.value = fModoDePago
         IdUsuario.value = fIdUsuario
-        NumDetalle.value = fNumDetalle
 
     operacion = "modificar"
 })
@@ -148,3 +156,55 @@ inputFecha.addEventListener("change", function() {
     var Fecha = new Date(inputFecha.value);
     seleccionFecha.innerHTML = "Fecha seleccionada: " + obtenerFechaString(Fecha);
 });
+
+const form = document.querySelector('#formpro');
+const fecha = document.querySelector('#Fecha');
+const mododepago = document.querySelector('#ModoDePago');
+const idusuario = document.querySelector('#IdUsuario');
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (fecha.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese una Fecha para el Pago.'
+        });
+        return;
+    }
+
+    if (mododepago.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese un Modo de pago.'
+        });
+        return;
+    }
+
+    if (idusuario.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese el Id de Usuario.'
+        });
+        return;
+    }
+
+    Swal.fire({
+        icon: 'success',
+        title: '¡Formulario enviado con éxito!',
+        showConfirmButton: true,
+        confirmButtonText: 'OK'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.submit();
+        }
+    });
+});
+
+
+function logout() {
+    sessionStorage.removeItem("Token");
+}

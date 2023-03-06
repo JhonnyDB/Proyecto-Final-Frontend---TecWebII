@@ -17,7 +17,7 @@ a:focus {
     background-size: cover;
 }
 .footer .title-footer{
-    color: #7095b3;
+    color: #b370b2;
     font-size: 2cm;
     line-height: 1.2;
 
@@ -75,7 +75,7 @@ a:focus {
 
 .footer .footer-social a:hover {
     color: #000000;
-    background: #96bddd;
+    background: #dc96dd;
     border-color: #ffffff;
 }
 
@@ -111,7 +111,7 @@ a:focus {
 }
 
 .footer .footer-links a:hover {
-    color: #96bddd;
+    color: #dd96dc;
 }
 
 .footer .footer-links a::before {
@@ -161,7 +161,7 @@ a:focus {
     font-weight: 400;
     text-transform: uppercase;
     color: #ffffff;
-    background: #7095b3;
+    background: #b270b3;
     border-radius: 5px;
     border: none;
     transition: .3s;
@@ -169,7 +169,7 @@ a:focus {
 
 .footer .footer-newsletter .btn:hover {
     color: #000000;
-    background: #e3e3e3;
+    background: #947b92;
 }
 
 .footer .footer-newsletter .btn:focus {
@@ -191,7 +191,7 @@ a:focus {
 }
 
 .footer .copyright .copy-text p a {
-    color: #6DA9DB;
+    color: #d66ddb;
     text-decoration: none;
 }
 
@@ -215,7 +215,7 @@ a:focus {
 }
 
 .footer .copyright .copy-menu a:hover {
-    color: #6DA9DB;
+    color: #d76ddb;
 }
 
 .footer .copyright .copy-menu a:last-child {

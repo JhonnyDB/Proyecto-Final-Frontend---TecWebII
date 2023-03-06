@@ -46,19 +46,32 @@ fetch(url, {
 
 //              Eliminacion de datos de la tabla 
 
-on (document, 'click', '.btnDelete', (e) => { 
+on(document, 'click', '.btnDelete', (e) => { 
     console.log("Eliminacion realizada")
-    fila = e.target.parentNode.parentNode
-    const codigo = fila.firstElementChild.innerHTML
-    fetch(url + "/" + codigo, {
-        method: "DELETE",
-        headers: {
+    
+    Swal.fire({
+        title: '¿Estás seguro de que deseas eliminar a este Cliente?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+        fila = e.target.parentNode.parentNode
+        const codigo = fila.firstElementChild.innerHTML
+        fetch(url + "/" + codigo, {
+            method: "DELETE",
+            headers: {
             Authorization: token,
         }
+        })
+        .then(response => response.json())
+        .then(() => location.reload ())
+        }
     })
-    .then(response => response.json())
-    .then(() => location.reload())
 })
+
 
 //                 Agregar datos de la tabla
 
@@ -89,7 +102,7 @@ formpro.addEventListener("submit", (e) => {
         const nuevo_cliente = []
         nuevo_cliente.push(data)
     })
-    .then(() => location.reload ()) 
+
     }
     if (operacion == "modificar"){ 
         fetch(url + '/' + id_form ,{method: "PUT",
@@ -113,7 +126,7 @@ formpro.addEventListener("submit", (e) => {
             const nuevo_cliente = []
             nuevo_cliente.push(data)
         })
-        .then(() => location.reload ()) 
+
         }
 })
 
@@ -142,3 +155,102 @@ on (document, 'click', '.btnEditar', e => {
     Ciudad.value = fCiudad
     operacion = "modificar"
 })
+
+
+const form = document.querySelector('#formpro');
+const nombrecliente = document.querySelector('#NombreCliente');
+const apellidocliente = document.querySelector('#ApellidoCliente');
+const direccion = document.querySelector('#Direccion');
+const fechanac = document.querySelector('#FechaNacimiento');
+const celular = document.querySelector('#Celular');
+const email = document.querySelector('#Email');
+const pais = document.querySelector('#Pais');
+const ciudad = document.querySelector('#Ciudad');
+
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    if (nombrecliente.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese un Nombre para el cliente.'
+        });
+        return;
+    }
+
+    if (apellidocliente.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese un Apellido para el cliente.'
+        });
+        return;
+    }
+
+    if (direccion.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese una Direccion.'
+        });
+        return;
+    }
+    if (fechanac.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese una Fecha de Nacimiento.'
+        });
+        return;
+    }
+    if (celular.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese un Nro de Celular.'
+        });
+        return;
+    }
+    if (email.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese un Email.'
+        });
+        return;
+    }
+    if (pais.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese un Pais.'
+        });
+        return;
+    }
+    if (ciudad.value.trim() === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Por favor ingrese una Ciudad.'
+        });
+        return;
+    }
+
+    Swal.fire({
+        icon: 'success',
+        title: '¡Formulario enviado con éxito!',
+        showConfirmButton: true,
+        confirmButtonText: 'OK'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            form.submit();
+        }
+    });
+});
+
+
+function logout() {
+    sessionStorage.removeItem("Token");
+}

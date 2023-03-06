@@ -4,12 +4,14 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+	
 }
 
 /*==========================*/
 
 .theme-mi-slider .nivoSlider{
 	position:relative;
+	height: 87vh;
 }
 
 .theme-mi-slider .nivoSlider a {
@@ -176,10 +178,10 @@
     50%{ transform:translateY(-20px) rotate(3deg) scale(1.1);  }
 }
 
-    span:nth-child(4n) { color:hsl(228, 100%, 63%); text-shadow:1px 1px hsl(0, 0%, 92%), 2px 2px hsl(0, 0%, 100%), 3px 3px hsl(219, 35%, 56%), 4px 4px hsl(0, 0%, 100%); }
-    span:nth-child(4n-1) { color:hsl(207, 19%, 75%); text-shadow:1px 1px hsl(218, 23%, 91%), 2px 2px hsl(0, 5%, 4%), 3px 3px hsl(208, 50%, 51%), 4px 4px hsl(203, 84%, 48%); }
-    span:nth-child(4n-2) { color:hsl(220, 79%, 68%); text-shadow:1px 1px hsl(240, 9%, 70%), 2px 2px hsl(232, 68%, 52%), 3px 3px hsl(0, 0%, 7%), 4px 4px hsl(0, 0%, 100%); }
-    span:nth-child(4n-3) { color:hsl(204, 48%, 43%); text-shadow:1px 1px hsl(0, 34%, 88%), 2px 2px hsl(216, 2%, 41%), 3px 3px #212529, 4px 4px hsl(206, 20%, 42%); }
+    span:nth-child(4n) { color:hsl(297, 45%, 77%); text-shadow:1px 1px hsl(0, 0%, 0%), 2px 2px hsl(0, 0%, 100%), 3px 3px hsl(298, 35%, 56%), 4px 4px hsl(0, 0%, 100%); }
+    span:nth-child(4n-1) { color:hsl(289, 37%, 66%); text-shadow:1px 1px hsl(218, 23%, 91%), 2px 2px hsl(0, 5%, 4%), 3px 3px hsl(309, 39%, 68%), 4px 4px hsl(328, 17%, 85%); }
+    span:nth-child(4n-2) { color:hsl(319, 50%, 65%); text-shadow:1px 1px hsl(240, 9%, 70%), 2px 2px hsl(313, 18%, 75%), 3px 3px hsl(0, 0%, 0%), 4px 4px hsl(303, 43%, 71%); }
+    span:nth-child(4n-3) { color:hsla(315, 45%, 65%, 0.808); text-shadow:1px 1px hsl(0, 34%, 88%), 2px 2px hsl(216, 2%, 41%), 3px 3px #212529, 4px 4px hsl(0, 0%, 0%); }
 
     h1 span:nth-child(2){ animation-delay:.05s; }
     h1 span:nth-child(3){ animation-delay:.1s; }
