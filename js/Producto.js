@@ -170,11 +170,11 @@ const imagen = document.querySelector('#Imagen');
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    if (nombreproducto.value.trim() === '') {
+    if (!/^[a-zA-Z\s]+$/.test(nombreproducto.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese un Nombre para el producto.'
+            text: 'Por favor ingrese un Nombre para el producto. (valido)'
         });
         return;
     }
@@ -188,30 +188,33 @@ form.addEventListener('submit', function(event) {
         return;
     }
 
-    if (preciou.value.trim() === '') {
+    if (!/^\d+(\.\d{1,2})?$/.test(preciou.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese el precio.'
+            text: 'Por favor ingrese un precio válido (solo números enteros o decimales con dos decimales como máximo).'
         });
         return;
     }
-    if (stock.value.trim() === '') {
+
+    if (!/^\d+$/.test(stock.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese el stock.'
+            text: 'Por favor ingrese un stock válido'
         });
         return;
     }
-    if (idcategoria.value.trim() === '') {
+
+    if (!/^\d+$/.test(idcategoria.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese el Id de categoria.'
+            text: 'Por favor ingrese un valor válido para el ID de categoría.'
         });
         return;
     }
+
     if (imagen.value.trim() === '') {
         Swal.fire({
             icon: 'error',

@@ -183,11 +183,11 @@ form.addEventListener('submit', function(event) {
         return;
     }
 
-    if (idusuario.value.trim() === '') {
+    if (!/^\d+$/.test(idusuario.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese el Id de Usuario.'
+            text: 'Por favor ingrese el Id de Usuario. (valido)'
         });
         return;
     }

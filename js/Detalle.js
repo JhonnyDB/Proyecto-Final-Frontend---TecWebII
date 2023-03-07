@@ -141,29 +141,29 @@ const numpago = document.querySelector('#NumPago');
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    if (cantidad.value.trim() === '') {
+    if (!/^\d+$/.test(cantidad.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese un Cantidad para el detalle.'
+            text: 'Por favor ingrese un Cantidad para el detalle. (valido)'
         });
         return;
     }
 
-    if (idproducto.value.trim() === '') {
+    if (!/^\d+$/.test(idproducto.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese el id del producto.'
+            text: 'Por favor ingrese el id del producto. (valido)'
         });
         return;
     }
 
-    if (numpago.value.trim() === '') {
+    if (!/^\d+$/.test(numpago.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese el numero de pago.'
+            text: 'Por favor ingrese el numero de pago. (valido)'
         });
         return;
     }

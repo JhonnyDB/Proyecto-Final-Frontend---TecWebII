@@ -171,20 +171,20 @@ const ciudad = document.querySelector('#Ciudad');
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
-    if (nombrecliente.value.trim() === '') {
+    if (!/^[a-zA-Z\s]+$/.test(nombrecliente.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese un Nombre para el cliente.'
+            text: 'Por favor ingrese un Nombre para el cliente. (valido)'
         });
         return;
     }
 
-    if (apellidocliente.value.trim() === '') {
+    if (!/^[a-zA-Z\s]+$/.test(apellidocliente.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese un Apellido para el cliente.'
+            text: 'Por favor ingrese un Apellido para el cliente. (valido)'
         });
         return;
     }
@@ -213,30 +213,31 @@ form.addEventListener('submit', function(event) {
         });
         return;
     }
-    if (email.value.trim() === '') {
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese un Email.'
+            text: 'Por favor ingrese un Email válido.'
         });
         return;
     }
-    if (pais.value.trim() === '') {
+    if (!/^[a-zA-Z\s]+$/.test(pais.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese un Pais.'
+            text: 'Por favor ingrese un Pais válido (solo letras y espacios en blanco).'
         });
         return;
     }
-    if (ciudad.value.trim() === '') {
+    if (!/^[a-zA-Z\s]+$/.test(ciudad.value.trim())) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Por favor ingrese una Ciudad.'
+            text: 'Por favor ingrese una Ciudad válida (solo letras y espacios en blanco).'
         });
         return;
     }
+
 
     Swal.fire({
         icon: 'success',
@@ -253,4 +254,10 @@ form.addEventListener('submit', function(event) {
 
 function logout() {
     sessionStorage.removeItem("Token");
+}
+
+function validarEmail(email) {
+    // Expresión regular para validar un correo electrónico
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
 }
